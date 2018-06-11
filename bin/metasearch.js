@@ -16,13 +16,17 @@ if (argv.help) {
 }
 
 var missi = require('mississippi')
-var melonbooks = require('../index')
-var req = melonbooks().createStream()
+var toranoana = require('../index')
+var req = toranoana().createStream()
 
-req.on('error', err => console.error(err))
-req.pipe(missi.through.obj((d, _, done) => {
-  done(null, JSON.stringify(d))
-})).pipe(process.stdout, {end: false})
+missi.pipe(
+  req,
+  missi.through.obj(function (d, _, done) {
+    done(null, JSON.stringify(d))
+  }),
+  process.stdout,
+  err => err && console.error(err)
+)
 
 req.end({
   category: argv.category,
