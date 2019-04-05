@@ -55,18 +55,18 @@ test('const stream = client.scraper()', t => {
   const scraper = c.scraper()
   const buf = []
   const expected_0 = {
-    title: '夏期補習10',
-    circle: '同人誌, 18禁, ゆきよし真水, ひとのふんどし, オリジナル, 在庫：○',
-    urlOfCircle: null,
-    urlOfTitle: 'https://ec.toranoana.jp/tora_r/ec/item/040030631737/',
-    srcOfThumbnail: 'https://ecimg.toranoana.jp/ec/img/04/0030/63/17/040030631737-1p_thumb.jpg'
+    urlOfTitle: 'https://ec.toranoana.jp/tora_r/ec/item/040030478820/',
+    srcOfThumbnail: 'https://ecdnimg.toranoana.jp/ec/img/04/0030/47/88/040030478820-1p_thumb.jpg',
+    title: '夏期補習総集編1～6+',
+    circle: 'ゆきよし真水 , ひとのふんどし , オリジナル , 在庫：×',
+    urlOfCircle: null
   }
-  const expected_23 = {
-    title: 'プリ○セスラバー！金子さんスリムポスター',
-    circle: '同人アイテム, ゆきよし真水, ひとのふんどし, プリンセスラバー, 金子綾乃, 在庫：×',
-    urlOfCircle: null,
-    urlOfTitle: 'https://ec.toranoana.jp/tora_r/ec/item/040010212041/',
-    srcOfThumbnail: 'https://ecimg.toranoana.jp/ec/img/04/0010/21/20/040010212041-1p_thumb.jpg'
+  const expected_17 = {
+    urlOfTitle: 'https://ec.toranoana.jp/tora_r/ec/item/040030260490/',
+    srcOfThumbnail: 'https://ecdnimg.toranoana.jp/ec/img/04/0030/26/04/040030260490-1p_thumb.jpg',
+    title: '夏期補習湯けむり手ぬぐい',
+    circle: 'ゆきよし真水 , ひとのふんどし , オリジナル , 木村理沙 , 在庫：×',
+    urlOfCircle: null
   }
 
   missi.pipe(
@@ -79,9 +79,9 @@ test('const stream = client.scraper()', t => {
     err => {
       t.error(err)
       t.ok(1, 'scraper emit "end"')
-      t.is(buf.length, 24)
+      t.is(buf.length, 18)
       t.deepEqual(buf[0], expected_0)
-      t.deepEqual(buf[23], expected_23)
+      t.deepEqual(buf[17], expected_17)
       t.end()
     }
   )
